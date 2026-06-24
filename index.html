@@ -39,7 +39,7 @@ body {
 
 .hidden { display: none !important; }
 
-/* ============ BACKGROUND ANIMATION ============ */
+/* BACKGROUND ANIMATION */
 .bg-animation {
     position: fixed;
     inset: 0;
@@ -60,7 +60,7 @@ body {
     100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
 }
 
-/* ============ AUTH SCREEN ============ */
+/* AUTH SCREEN */
 .auth-overlay {
     position: fixed;
     inset: 0;
@@ -94,7 +94,7 @@ body {
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.auth-logo { text-align: center; margin-bottom: 28px; }
+.auth-logo { text-align: center; margin-bottom: 24px; }
 .auth-logo .logo-icon-big {
     width: 70px; height: 70px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -119,7 +119,7 @@ body {
     margin-top: 5px;
 }
 
-.auth-form { display: flex; flex-direction: column; gap: 16px; }
+.auth-form { display: flex; flex-direction: column; gap: 14px; }
 .form-group { display: flex; flex-direction: column; gap: 7px; }
 .form-group label {
     font-size: 0.84rem;
@@ -246,6 +246,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 4px;
 }
 .alert-box.error {
     background: rgba(255,82,82,0.12);
@@ -263,36 +264,40 @@ body {
     color: var(--warning);
 }
 
-.pw-strength {
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-}
-.pw-bar {
-    flex: 1;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(255,255,255,0.1);
-    transition: background 0.3s;
-}
-.pw-label {
-    font-size: 0.73rem;
-    margin-top: 4px;
-}
-
-.admin-info {
-    margin-top: 14px;
-    padding: 11px 14px;
-    background: rgba(255,214,0,0.08);
-    border: 1px solid rgba(255,214,0,0.2);
-    border-radius: 11px;
-    font-size: 0.78rem;
+/* DEFAULT ADMIN INFO */
+.admin-default-info {
+    background: linear-gradient(135deg, rgba(255,214,0,0.1), rgba(255,170,64,0.08));
+    border: 1px solid rgba(255,214,0,0.25);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 0.82rem;
     color: var(--warning);
-    text-align: center;
-    line-height: 1.5;
+    line-height: 1.6;
 }
+.admin-default-info b { color: #FFE57F; }
+.admin-default-info .credentials {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.admin-default-info .cred-box {
+    background: rgba(0,0,0,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: var(--warning);
+    border: 1px dashed rgba(255,214,0,0.3);
+}
+.admin-default-info .cred-box strong { color: white; margin-right: 5px; }
 
-/* ============ NAVBAR ============ */
+.pw-strength { display: flex; gap: 4px; margin-top: 8px; }
+.pw-bar { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.1); transition: background 0.3s; }
+.pw-label { font-size: 0.73rem; margin-top: 4px; }
+
+/* NAVBAR */
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -322,8 +327,7 @@ body {
     cursor: pointer;
 }
 .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 12px;
     display: flex;
@@ -334,11 +338,7 @@ body {
     flex-shrink: 0;
 }
 
-.nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-}
+.nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -348,9 +348,7 @@ body {
     position: relative;
     cursor: pointer;
 }
-.nav-links a:hover, .nav-links a.active {
-    color: var(--text-primary);
-}
+.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 .nav-links a.active::after {
     content: '';
     position: absolute;
@@ -360,17 +358,17 @@ body {
     background: linear-gradient(90deg, var(--primary), var(--accent));
     border-radius: 2px;
 }
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.nav-links a.admin-link {
+    background: linear-gradient(135deg, var(--warning), #FFAB40);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
+.nav-right { display: flex; align-items: center; gap: 12px; }
 .user-dropdown { position: relative; }
 .user-avatar {
-    width: 42px;
-    height: 42px;
+    width: 42px; height: 42px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     display: flex;
@@ -384,7 +382,6 @@ body {
     position: relative;
 }
 .user-avatar:hover { transform: scale(1.08); }
-
 .role-badge {
     position: absolute;
     bottom: -4px;
@@ -397,20 +394,16 @@ body {
     border-radius: 8px;
     border: 2px solid var(--bg-dark);
 }
-.role-badge.user {
-    background: var(--accent);
-    color: #000;
-}
+.role-badge.user { background: var(--accent); color: #000; }
 
 .dropdown-menu {
     position: absolute;
-    top: 55px;
-    right: 0;
+    top: 55px; right: 0;
     background: var(--bg-card);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
     padding: 8px;
-    min-width: 230px;
+    min-width: 240px;
     box-shadow: 0 18px 45px rgba(0,0,0,0.5);
     display: none;
     z-index: 200;
@@ -429,25 +422,17 @@ body {
     display: flex;
     align-items: center;
     gap: 7px;
+    flex-wrap: wrap;
 }
-.dd-user p {
-    font-size: 0.77rem;
-    color: var(--text-secondary);
-}
+.dd-user p { font-size: 0.77rem; color: var(--text-secondary); }
 .role-tag {
     font-size: 0.65rem;
     padding: 2px 8px;
     border-radius: 6px;
     font-weight: 700;
 }
-.role-tag.admin {
-    background: rgba(255,214,0,0.15);
-    color: var(--warning);
-}
-.role-tag.user {
-    background: rgba(0,210,255,0.15);
-    color: var(--accent);
-}
+.role-tag.admin { background: rgba(255,214,0,0.15); color: var(--warning); }
+.role-tag.user { background: rgba(0,210,255,0.15); color: var(--accent); }
 
 .dd-divider {
     height: 1px;
@@ -478,6 +463,15 @@ body {
     background: rgba(255,82,82,0.1);
     color: var(--danger);
 }
+.dd-item.highlight {
+    background: linear-gradient(135deg, rgba(255,214,0,0.1), rgba(255,170,64,0.08));
+    color: var(--warning);
+    font-weight: 600;
+}
+.dd-item.highlight:hover {
+    background: linear-gradient(135deg, rgba(255,214,0,0.18), rgba(255,170,64,0.15));
+    color: var(--warning);
+}
 
 .hamburger {
     display: none;
@@ -496,15 +490,12 @@ body {
     transition: all 0.3s;
 }
 
-/* ============ MAIN APP ============ */
-.main-app {
-    position: relative;
-    z-index: 1;
-}
+/* MAIN APP */
+.main-app { position: relative; z-index: 1; }
 
-/* ============ HERO ============ */
+/* HERO */
 .hero {
-    padding: 130px 40px 55px;
+    padding: 130px 40px 50px;
     text-align: center;
 }
 .hero-badge {
@@ -530,7 +521,6 @@ body {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(1.5); }
 }
-
 .hero h1 {
     font-size: 2.9rem;
     font-weight: 900;
@@ -552,16 +542,21 @@ body {
     font-size: 1.05rem;
     color: var(--text-secondary);
     max-width: 660px;
-    margin: 0 auto 30px;
+    margin: 0 auto 28px;
     line-height: 1.7;
 }
 
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .hero-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 14px 32px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     border: none;
     border-radius: 14px;
     color: white;
@@ -570,20 +565,31 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
+}
+.hero-cta.primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     box-shadow: 0 8px 28px rgba(108,99,255,0.35);
 }
-.hero-cta:hover {
+.hero-cta.primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(108,99,255,0.45);
 }
+.hero-cta.admin {
+    background: linear-gradient(135deg, var(--warning), #FFAB40);
+    color: #000;
+    box-shadow: 0 8px 28px rgba(255,214,0,0.3);
+}
+.hero-cta.admin:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255,214,0,0.4);
+}
 
-/* ============ SECTIONS ============ */
+/* SECTIONS */
 .section-wrap {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
 }
-
 .section-title {
     font-size: 1.4rem;
     font-weight: 700;
@@ -599,7 +605,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* ============ STATS ============ */
+/* STATS */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -626,10 +632,8 @@ body {
 .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--warning), #FFAB40); }
 .stat-card:nth-child(4)::before { background: linear-gradient(90deg, var(--secondary), #FF8A80); }
 .stat-card:hover { transform: translateY(-4px); }
-
 .stat-icon {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -641,7 +645,6 @@ body {
 .stat-card:nth-child(2) .stat-icon { background: rgba(0,230,118,0.15); }
 .stat-card:nth-child(3) .stat-icon { background: rgba(255,214,0,0.15); }
 .stat-card:nth-child(4) .stat-icon { background: rgba(255,101,132,0.15); }
-
 .stat-card h3 {
     font-size: 1.7rem;
     font-weight: 800;
@@ -652,12 +655,45 @@ body {
     font-size: 0.82rem;
 }
 
-/* ============ ADMIN PANEL ============ */
+/* USER NOTICE */
+.user-notice {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: 22px 26px;
+    border: 1px solid rgba(0,210,255,0.2);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.user-notice .un-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,210,255,0.12);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.user-notice h4 {
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+    color: var(--accent);
+}
+.user-notice p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ADMIN PANEL */
 .admin-panel {
     background: var(--bg-card);
     border-radius: 24px;
     padding: 36px;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,214,0,0.18);
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
@@ -666,7 +702,7 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
+    height: 5px;
     background: linear-gradient(90deg, var(--warning), #FFAB40, var(--secondary));
 }
 
@@ -675,35 +711,37 @@ body {
     align-items: center;
     gap: 16px;
     margin-bottom: 8px;
+    flex-wrap: wrap;
 }
-.admin-icon {
-    width: 56px;
-    height: 56px;
+.admin-icon-wrap {
+    width: 60px; height: 60px;
     border-radius: 16px;
     background: linear-gradient(135deg, var(--warning), #FFAB40);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.7rem;
-    box-shadow: 0 8px 20px rgba(255,214,0,0.25);
+    font-size: 1.8rem;
+    box-shadow: 0 8px 22px rgba(255,214,0,0.3);
 }
 .admin-header h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 4px;
+    color: var(--warning);
 }
 .admin-header p {
     color: var(--text-secondary);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
 }
 
+/* Steps */
 .admin-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 14px;
     margin: 24px 0;
 }
 .adm-step {
-    padding: 16px;
+    padding: 18px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 13px;
@@ -712,29 +750,74 @@ body {
 }
 .adm-step .step-num {
     position: absolute;
-    top: -10px;
+    top: -11px;
     left: 50%;
     transform: translateX(-50%);
-    width: 26px;
-    height: 26px;
-    background: var(--primary);
+    width: 26px; height: 26px;
+    background: var(--warning);
+    color: #000;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.78rem;
     font-weight: 700;
-    color: white;
 }
-.adm-step .step-icon { font-size: 1.6rem; margin-bottom: 8px; }
-.adm-step h4 { font-size: 0.9rem; margin-bottom: 4px; }
+.adm-step .step-icon {
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+}
+.adm-step h4 {
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+}
 .adm-step p {
-    font-size: 0.76rem;
+    font-size: 0.77rem;
     color: var(--text-secondary);
     line-height: 1.4;
 }
 
-/* Store File Upload Cards */
+/* Big Upload Box */
+.upload-mega-box {
+    background: linear-gradient(135deg, rgba(108,99,255,0.06), rgba(0,210,255,0.04));
+    border: 3px dashed rgba(108,99,255,0.35);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    margin: 24px 0;
+    transition: all 0.3s;
+}
+.upload-mega-box:hover {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,210,255,0.06));
+}
+.upload-mega-box .mega-icon {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+.upload-mega-box h4 {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+.upload-mega-box p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+}
+.upload-mega-box .mega-info {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 14px;
+}
+.upload-mega-box .mega-info code {
+    background: rgba(255,255,255,0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--accent);
+    font-size: 0.78rem;
+}
+
+/* Store File Cards */
 .store-files-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -773,8 +856,7 @@ body {
     margin-bottom: 12px;
 }
 .sf-logo {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: 11px;
     display: flex;
     align-items: center;
@@ -789,7 +871,6 @@ body {
 .store-file-card.s3 .sf-logo { background: var(--store3); }
 .store-file-card.s4 .sf-logo { background: var(--store4); }
 .store-file-card.s5 .sf-logo { background: var(--store5); }
-
 .sf-info { flex: 1; min-width: 0; }
 .sf-info h4 {
     font-size: 0.88rem;
@@ -805,6 +886,27 @@ body {
     white-space: nowrap;
 }
 
+.sf-upload-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(108,99,255,0.08);
+    border: 1px dashed rgba(108,99,255,0.3);
+    border-radius: 10px;
+    color: var(--primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+}
+.store-file-card:hover .sf-upload-prompt {
+    background: rgba(108,99,255,0.15);
+    border-color: var(--primary);
+}
+.store-file-card.loaded .sf-upload-prompt { display: none; }
+
 .sf-status {
     display: flex;
     align-items: center;
@@ -812,10 +914,10 @@ body {
     font-size: 0.78rem;
 }
 .badge-status {
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
 }
 .badge-empty {
     background: rgba(255,255,255,0.05);
@@ -874,6 +976,14 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 8px 22px rgba(0,230,118,0.4);
 }
+.btn-warning {
+    background: linear-gradient(135deg, var(--warning), #FFAB40);
+    color: #000;
+}
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(255,214,0,0.4);
+}
 .btn-secondary {
     background: rgba(255,255,255,0.05);
     color: var(--text-secondary);
@@ -892,6 +1002,11 @@ body {
     background: rgba(255,82,82,0.2);
     transform: translateY(-2px);
 }
+.btn-big {
+    padding: 16px 36px;
+    font-size: 1rem;
+    border-radius: 14px;
+}
 
 /* Info Box */
 .info-box {
@@ -902,7 +1017,7 @@ body {
     margin: 20px 0;
 }
 .info-box h4 {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--accent);
     margin-bottom: 10px;
     display: flex;
@@ -911,61 +1026,28 @@ body {
 }
 .info-box ul { list-style: none; padding-left: 0; }
 .info-box li {
-    font-size: 0.84rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    line-height: 1.7;
-    padding-left: 20px;
+    line-height: 1.75;
+    padding-left: 22px;
     position: relative;
 }
 .info-box li::before {
-    content: '•';
+    content: '✓';
     position: absolute;
-    left: 6px;
-    color: var(--accent);
+    left: 4px;
+    color: var(--success);
     font-weight: 700;
 }
 .info-box code {
     background: rgba(255,255,255,0.08);
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--accent);
 }
 
-/* User Notice */
-.user-notice {
-    background: var(--bg-card);
-    border-radius: 18px;
-    padding: 24px 28px;
-    border: 1px solid rgba(0,210,255,0.2);
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-.user-notice .un-icon {
-    font-size: 2rem;
-    width: 50px;
-    height: 50px;
-    background: rgba(0,210,255,0.12);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-.user-notice h4 {
-    font-size: 0.95rem;
-    margin-bottom: 3px;
-    color: var(--accent);
-}
-.user-notice p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* ============ STORES TOGGLE ============ */
+/* STORES TOGGLE */
 .store-toggle-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -992,10 +1074,8 @@ body {
 .store-badge.s3 { border-color: var(--store3); }
 .store-badge.s4 { border-color: var(--store4); }
 .store-badge.s5 { border-color: var(--store5); }
-
 .store-logo {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -1010,7 +1090,6 @@ body {
 .store-badge.s3 .store-logo { background: var(--store3); }
 .store-badge.s4 .store-logo { background: var(--store4); }
 .store-badge.s5 .store-logo { background: var(--store5); }
-
 .store-info h4 {
     font-size: 0.87rem;
     font-weight: 600;
@@ -1020,11 +1099,9 @@ body {
     font-size: 0.72rem;
     color: var(--text-secondary);
 }
-
 .store-check {
     margin-left: auto;
-    width: 24px;
-    height: 24px;
+    width: 24px; height: 24px;
     border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.2);
     display: flex;
@@ -1039,10 +1116,8 @@ body {
     border-color: var(--success);
 }
 
-/* ============ SEARCH BAR ============ */
-.search-section {
-    margin-bottom: 30px;
-}
+/* SEARCH */
+.search-section { margin-bottom: 30px; }
 .search-box {
     display: flex;
     background: var(--bg-card);
@@ -1074,7 +1149,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 .search-box input::placeholder { color: rgba(160,160,192,0.45); }
-
 .search-clear {
     background: none;
     border: none;
@@ -1087,7 +1161,6 @@ body {
 }
 .search-clear.show { display: flex; }
 .search-clear:hover { color: var(--danger); }
-
 .search-box button {
     padding: 13px 30px;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -1126,7 +1199,6 @@ body {
 }
 .search-hint b { color: var(--primary); }
 
-/* Quick Search Suggestions */
 .quick-search {
     display: flex;
     gap: 8px;
@@ -1150,7 +1222,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* ============ RESULTS ============ */
+/* RESULTS */
 .results-header {
     display: flex;
     justify-content: space-between;
@@ -1167,7 +1239,6 @@ body {
     color: var(--text-primary);
     font-size: 1.05rem;
 }
-
 .sort-select {
     padding: 11px 18px;
     background: var(--bg-card);
@@ -1181,7 +1252,7 @@ body {
 }
 .sort-select option { background: var(--bg-card); }
 
-/* ============ PRODUCT CARDS ============ */
+/* PRODUCT CARDS */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -1200,7 +1271,6 @@ body {
     box-shadow: 0 14px 38px rgba(0,0,0,0.28);
     border-color: rgba(108,99,255,0.28);
 }
-
 .pc-header { padding: 20px 20px 0; }
 .pc-cat {
     font-size: 0.7rem;
@@ -1244,7 +1314,6 @@ body {
     background: rgba(255,255,255,0.04);
     border-radius: 5px;
 }
-
 .pc-best {
     display: flex;
     align-items: center;
@@ -1260,7 +1329,6 @@ body {
     font-weight: 800;
     color: var(--success);
 }
-
 .pc-save {
     display: inline-flex;
     align-items: center;
@@ -1272,10 +1340,7 @@ body {
     color: var(--success);
     margin-bottom: 14px;
 }
-
-.pc-cmp {
-    padding: 0 20px 18px;
-}
+.pc-cmp { padding: 0 20px 18px; }
 .pc-cmp-title {
     font-size: 0.77rem;
     color: var(--text-secondary);
@@ -1286,7 +1351,6 @@ body {
     align-items: center;
     gap: 5px;
 }
-
 .price-row {
     display: flex;
     align-items: center;
@@ -1307,8 +1371,7 @@ body {
     gap: 8px;
 }
 .pr-dot {
-    width: 10px;
-    height: 10px;
+    width: 10px; height: 10px;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -1317,7 +1380,6 @@ body {
 .dot-s3 { background: var(--store3); }
 .dot-s4 { background: var(--store4); }
 .dot-s5 { background: var(--store5); }
-
 .pr-name {
     font-size: 0.82rem;
     font-weight: 500;
@@ -1345,11 +1407,7 @@ body {
     color: var(--text-secondary);
     font-style: italic;
 }
-
-/* Bar Chart */
-.pc-bars {
-    padding: 8px 20px 18px;
-}
+.pc-bars { padding: 8px 20px 18px; }
 .bar-row {
     display: flex;
     align-items: center;
@@ -1380,7 +1438,6 @@ body {
 .bar-s3 { background: var(--store3); }
 .bar-s4 { background: var(--store4); }
 .bar-s5 { background: var(--store5); }
-
 .bar-price {
     font-size: 0.68rem;
     color: var(--text-secondary);
@@ -1389,7 +1446,7 @@ body {
     flex-shrink: 0;
 }
 
-/* Load More */
+/* LOAD MORE */
 .load-more-wrap {
     text-align: center;
     padding: 30px 0;
@@ -1412,7 +1469,7 @@ body {
     box-shadow: 0 12px 28px rgba(108,99,255,0.42);
 }
 
-/* Landing State */
+/* LANDING */
 .landing-state {
     text-align: center;
     padding: 70px 20px;
@@ -1460,7 +1517,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* No Results */
+/* NO RESULTS */
 .no-results {
     text-align: center;
     padding: 60px 20px;
@@ -1479,7 +1536,7 @@ body {
     line-height: 1.6;
 }
 
-/* ============ MODAL ============ */
+/* MODAL */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1492,7 +1549,6 @@ body {
     padding: 20px;
 }
 .modal-overlay.show { display: flex; }
-
 .modal {
     background: var(--bg-card);
     border-radius: 22px;
@@ -1509,7 +1565,6 @@ body {
     from { opacity: 0; transform: scale(0.92) translateY(20px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
-
 .modal-close {
     position: absolute;
     top: 14px;
@@ -1531,7 +1586,6 @@ body {
     background: var(--danger);
     color: white;
 }
-
 .modal h2 {
     font-size: 1.4rem;
     margin-bottom: 6px;
@@ -1541,7 +1595,6 @@ body {
     font-size: 0.88rem;
     margin-bottom: 22px;
 }
-
 .mform-group { margin-bottom: 14px; }
 .mform-group label {
     display: block;
@@ -1563,7 +1616,6 @@ body {
     transition: border-color 0.3s;
 }
 .mform-group input:focus { border-color: var(--primary); }
-
 .modal-btn {
     width: 100%;
     padding: 14px;
@@ -1583,7 +1635,7 @@ body {
     box-shadow: 0 8px 24px rgba(108,99,255,0.4);
 }
 
-/* ============ TOAST ============ */
+/* TOAST */
 .toast-wrap {
     position: fixed;
     bottom: 28px;
@@ -1621,7 +1673,7 @@ body {
     background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
-/* ============ LOADING ============ */
+/* LOADING */
 .loading-overlay {
     position: fixed;
     inset: 0;
@@ -1634,7 +1686,6 @@ body {
     gap: 20px;
 }
 .loading-overlay.show { display: flex; }
-
 .spinner {
     width: 56px;
     height: 56px;
@@ -1644,12 +1695,10 @@ body {
     animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .loading-text {
     color: var(--text-secondary);
     font-size: 0.92rem;
 }
-
 .progress-bar {
     width: 280px;
     height: 6px;
@@ -1665,7 +1714,7 @@ body {
     width: 0%;
 }
 
-/* ============ BACK TO TOP ============ */
+/* BACK TOP */
 .back-top {
     position: fixed;
     bottom: 28px;
@@ -1688,7 +1737,7 @@ body {
 .back-top.show { display: flex; }
 .back-top:hover { transform: translateY(-4px); }
 
-/* ============ FOOTER ============ */
+/* FOOTER */
 .footer {
     background: var(--bg-card);
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -1718,7 +1767,6 @@ body {
     border-radius: 8px;
 }
 
-/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
     .navbar { padding: 12px 18px; }
     .nav-links {
@@ -1743,7 +1791,7 @@ body {
     .search-box { flex-direction: column; }
     .search-box button { margin: 0 6px 6px; justify-content: center; }
     .auth-container { padding: 30px 24px; }
-    .admin-panel { padding: 24px 18px; }
+    .admin-panel { padding: 22px 18px; }
     .user-notice { flex-direction: column; text-align: center; }
 }
 
@@ -1758,27 +1806,34 @@ body {
 </head>
 <body>
 
-<!-- ============ BACKGROUND ============ -->
 <div class="bg-animation" id="bgAnimation"></div>
 
-<!-- ============ LOADING OVERLAY ============ -->
 <div class="loading-overlay" id="loadingOverlay">
     <div class="spinner"></div>
     <div class="loading-text" id="loadingText">Memproses...</div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
-<!-- ============ AUTH SCREEN ============ -->
+<!-- AUTH -->
 <div class="auth-overlay" id="authOverlay">
     <div class="auth-wrap">
 
-        <!-- LOGIN -->
         <div class="auth-container" id="loginBox">
             <div class="auth-logo">
                 <div class="logo-icon-big">🔍</div>
                 <h1>PriceHunter</h1>
                 <p>Masuk ke akun Anda</p>
             </div>
+
+            <div class="admin-default-info">
+                <b>👑 Login Admin Default:</b><br>
+                Gunakan akun ini untuk mengupload data Excel ke 5 toko.
+                <div class="credentials">
+                    <div class="cred-box"><strong>User:</strong>admin</div>
+                    <div class="cred-box"><strong>Pass:</strong>admin123</div>
+                </div>
+            </div>
+
             <div class="alert-box error hidden" id="loginErr">
                 <span>⚠️</span><span id="loginErrMsg"></span>
             </div>
@@ -1811,7 +1866,6 @@ body {
             </div>
         </div>
 
-        <!-- REGISTER -->
         <div class="auth-container hidden" id="registerBox">
             <div class="auth-logo">
                 <div class="logo-icon-big">📝</div>
@@ -1824,9 +1878,9 @@ body {
             <div class="alert-box success hidden" id="regOk">
                 <span>✅</span><span id="regOkMsg"></span>
             </div>
-            <div class="alert-box info" id="adminNoticeReg">
-                <span>👑</span>
-                <span><b>Akun pertama otomatis jadi ADMIN.</b> Admin bisa upload Excel & kelola data.</span>
+            <div class="alert-box info">
+                <span>ℹ️</span>
+                <span>Akun baru otomatis sebagai <b>USER biasa</b>. User hanya bisa cari & lihat data. Untuk upload Excel, gunakan akun <b>admin</b>.</span>
             </div>
             <div class="auth-form">
                 <div class="form-group">
@@ -1873,21 +1927,19 @@ body {
                 Sudah punya akun? <a onclick="switchToLogin()">Masuk</a>
             </div>
         </div>
-
     </div>
 </div>
 
-<!-- ============ MAIN APP ============ -->
+<!-- MAIN APP -->
 <div class="main-app hidden" id="mainApp">
 
-    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="logo" onclick="scrollToTop()">
             <div class="logo-icon">🔍</div> PriceHunter
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a class="active" onclick="goTo('topArea')">Beranda</a></li>
-            <li><a id="navAdminLink" class="hidden" onclick="goTo('adminArea')">Admin</a></li>
+            <li><a id="navAdminLink" class="hidden admin-link" onclick="goTo('adminArea')">⚙️ Admin Panel</a></li>
             <li><a onclick="goTo('storeArea')">Toko</a></li>
             <li><a onclick="goTo('resultArea')">Cari Produk</a></li>
         </ul>
@@ -1902,7 +1954,7 @@ body {
                         <p id="ddUsername">@user</p>
                     </div>
                     <div class="dd-divider"></div>
-                    <button class="dd-item hidden" id="ddAdminBtn" onclick="goTo('adminArea');closeDropdown()">⚙️ Admin Panel</button>
+                    <button class="dd-item highlight hidden" id="ddAdminBtn" onclick="goTo('adminArea');closeDropdown()">⚙️ Buka Admin Panel</button>
                     <button class="dd-item" onclick="exportData();closeDropdown()">📥 Export Excel</button>
                     <div class="dd-divider"></div>
                     <button class="dd-item danger" onclick="doLogout()">🚪 Keluar</button>
@@ -1914,7 +1966,6 @@ body {
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero" id="topArea">
         <div class="hero-badge">
             <span class="pulse-dot"></span>
@@ -1922,12 +1973,16 @@ body {
         </div>
         <h1>Cek & Bandingkan Harga<br><span class="gradient-text">5 Toko Perabot</span></h1>
         <p>Cari produk perabot favorit Anda dan bandingkan harga dari 5 toko sekaligus. Ketik di kolom pencarian untuk mulai.</p>
-        <button class="hero-cta" onclick="goTo('resultArea');setTimeout(()=>document.getElementById('searchInput').focus(),500)">
-            🔍 Mulai Cari Sekarang
-        </button>
+        <div class="hero-actions">
+            <button class="hero-cta primary" onclick="goTo('resultArea');setTimeout(()=>document.getElementById('searchInput').focus(),500)">
+                🔍 Mulai Cari Sekarang
+            </button>
+            <button class="hero-cta admin hidden" id="heroAdminBtn" onclick="goTo('adminArea')">
+                ⚙️ Upload Data Excel (Admin)
+            </button>
+        </div>
     </section>
 
-    <!-- STATS -->
     <div class="section-wrap">
         <div class="stats-grid">
             <div class="stat-card">
@@ -1953,7 +2008,6 @@ body {
         </div>
     </div>
 
-    <!-- USER NOTICE (untuk non-admin) -->
     <div class="section-wrap hidden" id="userNoticeArea">
         <div class="user-notice">
             <div class="un-icon">ℹ️</div>
@@ -1968,20 +2022,21 @@ body {
     <div class="section-wrap hidden" id="adminArea">
         <div class="admin-panel">
             <div class="admin-header">
-                <div class="admin-icon">⚙️</div>
+                <div class="admin-icon-wrap">⚙️</div>
                 <div>
-                    <h3>Admin Panel — Kelola Data Toko</h3>
-                    <p>Upload file Excel asli dari masing-masing toko untuk membandingkan harga</p>
+                    <h3>Admin Panel — Upload Data Excel</h3>
+                    <p>Upload file Excel dari masing-masing toko untuk mulai membandingkan harga</p>
                 </div>
             </div>
 
             <div class="info-box">
-                <h4>📌 Cara Pakai Converter</h4>
+                <h4>📌 Cara Upload Data Excel</h4>
                 <ul>
-                    <li>Upload file Excel <code>.xlsx</code> dari masing-masing toko (format daftar item asli)</li>
+                    <li>Klik kotak toko di bawah, lalu pilih file Excel (.xlsx/.xls) dari komputer Anda</li>
                     <li>Sistem otomatis baca kolom <code>Nama Item</code> + <code>Harga Jual</code> + <code>Kode Item</code> + <code>Jenis</code></li>
-                    <li>Produk yang sama (berdasarkan nama) akan otomatis digabungkan</li>
-                    <li>Klik <b>Proses & Gabungkan</b> untuk menyatukan data semua toko</li>
+                    <li>Upload semua 5 toko (atau sebagian), lalu klik tombol <b>"Proses & Gabungkan Data"</b></li>
+                    <li>Produk yang sama (berdasarkan nama) akan otomatis digabungkan untuk perbandingan</li>
+                    <li>Setelah diproses, semua user bisa langsung cari & lihat perbandingan harga</li>
                 </ul>
             </div>
 
@@ -1990,41 +2045,53 @@ body {
                     <div class="step-num">1</div>
                     <div class="step-icon">📂</div>
                     <h4>Upload File</h4>
-                    <p>Excel tiap toko</p>
+                    <p>Klik & pilih Excel tiap toko</p>
                 </div>
                 <div class="adm-step">
                     <div class="step-num">2</div>
                     <div class="step-icon">🔍</div>
                     <h4>Auto Baca</h4>
-                    <p>Deteksi otomatis</p>
+                    <p>Sistem deteksi otomatis</p>
                 </div>
                 <div class="adm-step">
                     <div class="step-num">3</div>
                     <div class="step-icon">🔗</div>
                     <h4>Gabung Data</h4>
-                    <p>Match produk sama</p>
+                    <p>Cocokkan produk sama</p>
                 </div>
                 <div class="adm-step">
                     <div class="step-num">4</div>
                     <div class="step-icon">📊</div>
                     <h4>Siap Pakai</h4>
-                    <p>User bisa cari</p>
+                    <p>User bisa cari produk</p>
                 </div>
             </div>
 
+            <h3 style="margin: 24px 0 14px; font-size: 1.1rem;">📁 Upload File Excel Tiap Toko</h3>
             <div class="store-files-grid" id="storeFilesGrid"></div>
 
+            <div class="upload-mega-box">
+                <div class="mega-icon">🚀</div>
+                <h4>Sudah Upload Semua File?</h4>
+                <p>Klik tombol di bawah untuk menggabungkan data semua toko</p>
+                <button class="btn btn-success btn-big" onclick="processConverter()">
+                    🚀 Proses & Gabungkan Data
+                </button>
+                <div class="mega-info">
+                    Setelah diproses, data tersedia untuk semua user dan tersimpan otomatis
+                </div>
+            </div>
+
+            <h3 style="margin: 24px 0 14px; font-size: 1.1rem;">🛠️ Aksi Lainnya</h3>
             <div class="action-buttons">
-                <button class="btn btn-success" onclick="processConverter()">🚀 Proses & Gabungkan</button>
-                <button class="btn btn-secondary" onclick="exportData()">📥 Download Excel Gabungan</button>
-                <button class="btn btn-secondary" onclick="openAddModal()">✏️ Tambah Manual</button>
-                <button class="btn btn-secondary" onclick="loadSampleData()">📋 Data Contoh</button>
-                <button class="btn btn-danger" onclick="clearAllData()">🗑️ Hapus Semua</button>
+                <button class="btn btn-primary" onclick="exportData()">📥 Download Excel Gabungan</button>
+                <button class="btn btn-secondary" onclick="openAddModal()">✏️ Tambah Produk Manual</button>
+                <button class="btn btn-secondary" onclick="loadSampleData()">📋 Load Data Contoh</button>
+                <button class="btn btn-danger" onclick="clearAllData()">🗑️ Hapus Semua Data</button>
             </div>
         </div>
     </div>
 
-    <!-- STORES TOGGLE -->
     <div class="section-wrap" id="storeArea">
         <div class="section-title">
             🏪 5 Toko Perabot
@@ -2033,7 +2100,6 @@ body {
         <div class="store-toggle-grid" id="storeToggleGrid"></div>
     </div>
 
-    <!-- SEARCH & RESULTS -->
     <div class="section-wrap" id="resultArea">
         <div class="section-title">🔍 Cari Produk</div>
 
@@ -2090,7 +2156,6 @@ body {
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <p>© 2025 PriceHunter — Pembanding Harga 5 Toko Perabot</p>
         <div class="footer-stores">
@@ -2103,53 +2168,25 @@ body {
     </footer>
 </div>
 
-<!-- MODAL: TAMBAH MANUAL -->
+<!-- MODAL TAMBAH MANUAL -->
 <div class="modal-overlay" id="addModal">
     <div class="modal">
         <button class="modal-close" onclick="closeAddModal()">✕</button>
         <h2>➕ Tambah Produk Manual</h2>
         <p>Masukkan nama produk dan harga di setiap toko. Kosongkan jika toko tidak jual.</p>
-
-        <div class="mform-group">
-            <label>Nama Produk *</label>
-            <input type="text" id="m_name" placeholder="Contoh: Panci Stainless 24cm">
-        </div>
-        <div class="mform-group">
-            <label>Kode Item (opsional)</label>
-            <input type="text" id="m_code" placeholder="Contoh: NN00001">
-        </div>
-        <div class="mform-group">
-            <label>Jenis (opsional)</label>
-            <input type="text" id="m_jenis" placeholder="Contoh: ALLUMINIUM / PLASTIK">
-        </div>
-        <div class="mform-group">
-            <label>Harga Central Perabot (Rp)</label>
-            <input type="number" id="m_p1" placeholder="Kosongkan jika tidak ada" min="0">
-        </div>
-        <div class="mform-group">
-            <label>Harga Nasional Kitchen (Rp)</label>
-            <input type="number" id="m_p2" placeholder="Kosongkan jika tidak ada" min="0">
-        </div>
-        <div class="mform-group">
-            <label>Harga Mama Oesapa (Rp)</label>
-            <input type="number" id="m_p3" placeholder="Kosongkan jika tidak ada" min="0">
-        </div>
-        <div class="mform-group">
-            <label>Harga Mama TDM (Rp)</label>
-            <input type="number" id="m_p4" placeholder="Kosongkan jika tidak ada" min="0">
-        </div>
-        <div class="mform-group">
-            <label>Harga Mama Kefamenanu (Rp)</label>
-            <input type="number" id="m_p5" placeholder="Kosongkan jika tidak ada" min="0">
-        </div>
+        <div class="mform-group"><label>Nama Produk *</label><input type="text" id="m_name" placeholder="Contoh: Panci Stainless 24cm"></div>
+        <div class="mform-group"><label>Kode Item (opsional)</label><input type="text" id="m_code" placeholder="Contoh: NN00001"></div>
+        <div class="mform-group"><label>Jenis (opsional)</label><input type="text" id="m_jenis" placeholder="Contoh: ALLUMINIUM / PLASTIK"></div>
+        <div class="mform-group"><label>Harga Central Perabot (Rp)</label><input type="number" id="m_p1" placeholder="Kosongkan jika tidak ada" min="0"></div>
+        <div class="mform-group"><label>Harga Nasional Kitchen (Rp)</label><input type="number" id="m_p2" placeholder="Kosongkan jika tidak ada" min="0"></div>
+        <div class="mform-group"><label>Harga Mama Oesapa (Rp)</label><input type="number" id="m_p3" placeholder="Kosongkan jika tidak ada" min="0"></div>
+        <div class="mform-group"><label>Harga Mama TDM (Rp)</label><input type="number" id="m_p4" placeholder="Kosongkan jika tidak ada" min="0"></div>
+        <div class="mform-group"><label>Harga Mama Kefamenanu (Rp)</label><input type="number" id="m_p5" placeholder="Kosongkan jika tidak ada" min="0"></div>
         <button class="modal-btn" onclick="saveManual()">✅ Tambahkan Produk</button>
     </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast-wrap" id="toastWrap"></div>
-
-<!-- BACK TO TOP -->
 <button class="back-top" id="backTop" onclick="scrollToTop()">↑</button>
 
 <script>
@@ -2164,11 +2201,17 @@ const STORES = [
     { name: 'Toko Perabot Mama Kefamenanu',   short: 'Mama Kefamenanu',   code: 'MK', dot: 'dot-s5', bar: 'bar-s5' }
 ];
 
-const PAGE_SIZE = 30; // Render 30 produk per halaman (untuk performa)
+const PAGE_SIZE = 30;
+const DEFAULT_ADMIN = {
+    fullname: 'Administrator',
+    username: 'admin',
+    password: 'admin123',
+    role: 'admin',
+    createdAt: new Date().toISOString(),
+    isDefault: true
+};
 
-// =====================================================
 // STATE
-// =====================================================
 let products = [];
 let activeStores = [true, true, true, true, true];
 let currentUser = null;
@@ -2179,15 +2222,13 @@ let currentFilteredList = [];
 let currentDisplayCount = 0;
 let currentSearchQuery = '';
 
-// =====================================================
 // INIT
-// =====================================================
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
+    ensureDefaultAdmin();
     buildStoreFilesGrid();
     buildStoreToggleGrid();
 
-    // Enter key navigation
     const fields = ['li_user', 'li_pass', 'rg_name', 'rg_user', 'rg_pass', 'rg_conf'];
     fields.forEach((id, i) => {
         const el = document.getElementById(id);
@@ -2204,13 +2245,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Search input handlers
     document.getElementById('searchInput').addEventListener('keydown', e => {
         if (e.key === 'Escape') clearSearch();
         if (e.key === 'Enter') performSearch();
     });
 
-    // Try restore session
     try {
         const sess = localStorage.getItem('ph_session');
         if (sess) {
@@ -2229,9 +2268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// =====================================================
 // PARTICLES
-// =====================================================
 function createParticles() {
     const bg = document.getElementById('bgAnimation');
     const colors = ['#6C63FF', '#00D2FF', '#FF6584'];
@@ -2244,9 +2281,18 @@ function createParticles() {
     }
 }
 
-// =====================================================
+// ENSURE DEFAULT ADMIN EXISTS
+function ensureDefaultAdmin() {
+    const users = getUsers();
+    const adminExists = users.find(u => u.username === 'admin');
+    if (!adminExists) {
+        users.push(DEFAULT_ADMIN);
+        saveUsers(users);
+        console.log('✅ Default admin created: admin / admin123');
+    }
+}
+
 // USER STORAGE
-// =====================================================
 function getUsers() {
     try { return JSON.parse(localStorage.getItem('ph_users') || '[]'); }
     catch(e) { return []; }
@@ -2254,7 +2300,6 @@ function getUsers() {
 function saveUsers(u) {
     localStorage.setItem('ph_users', JSON.stringify(u));
 }
-// Data SHARED untuk semua user (admin upload, semua user lihat)
 function getSharedData() {
     try { return JSON.parse(localStorage.getItem('ph_shared_data') || '[]'); }
     catch(e) { return []; }
@@ -2263,9 +2308,7 @@ function saveSharedData() {
     localStorage.setItem('ph_shared_data', JSON.stringify(products));
 }
 
-// =====================================================
-// AUTH — REGISTER
-// =====================================================
+// REGISTER
 function doRegister() {
     hideAuthMessages();
     const name = (document.getElementById('rg_name').value || '').trim();
@@ -2278,6 +2321,7 @@ function doRegister() {
     if (!user) { showRegErr('Username wajib diisi!'); return; }
     if (user.length < 3) { showRegErr('Username minimal 3 karakter!'); return; }
     if (!/^[a-z0-9_]+$/.test(user)) { showRegErr('Username hanya boleh huruf kecil, angka & underscore!'); return; }
+    if (user === 'admin') { showRegErr('Username "admin" sudah dipakai sistem!'); return; }
     if (!pass) { showRegErr('Password wajib diisi!'); return; }
     if (pass.length < 6) { showRegErr('Password minimal 6 karakter!'); return; }
     if (pass !== conf) { showRegErr('Password & konfirmasi tidak cocok!'); return; }
@@ -2288,31 +2332,26 @@ function doRegister() {
         return;
     }
 
-    // Akun pertama = admin
-    const role = users.length === 0 ? 'admin' : 'user';
+    // Akun baru selalu user biasa
     const newUser = {
         fullname: name,
         username: user,
         password: pass,
-        role: role,
+        role: 'user',
         createdAt: new Date().toISOString()
     };
     users.push(newUser);
     saveUsers(users);
 
     document.getElementById('regOk').classList.remove('hidden');
-    document.getElementById('regOkMsg').textContent = role === 'admin'
-        ? '🎉 Akun ADMIN berhasil dibuat! Silakan login.'
-        : '✅ Akun berhasil dibuat! Silakan login.';
+    document.getElementById('regOkMsg').textContent = '✅ Akun berhasil dibuat! Silakan login.';
 
     ['rg_name','rg_user','rg_pass','rg_conf'].forEach(id => document.getElementById(id).value = '');
     checkPwStrength('');
     setTimeout(() => switchToLogin(), 2200);
 }
 
-// =====================================================
-// AUTH — LOGIN
-// =====================================================
+// LOGIN
 function doLogin() {
     hideAuthMessages();
     const user = (document.getElementById('li_user').value || '').trim().toLowerCase();
@@ -2335,9 +2374,7 @@ function doLogin() {
     enterApp();
 }
 
-// =====================================================
-// AUTH — LOGOUT
-// =====================================================
+// LOGOUT
 function doLogout() {
     currentUser = null;
     localStorage.removeItem('ph_session');
@@ -2350,9 +2387,7 @@ function doLogout() {
     showToast('Berhasil keluar!', 'info');
 }
 
-// =====================================================
 // ENTER APP
-// =====================================================
 function enterApp() {
     document.getElementById('authOverlay').classList.add('hidden');
     document.getElementById('mainApp').classList.remove('hidden');
@@ -2373,25 +2408,28 @@ function enterApp() {
     document.getElementById('ddUsername').textContent = '@' + currentUser.username;
     document.getElementById('heroName').textContent = currentUser.fullname.split(' ')[0];
 
-    // Admin panel visibility
     document.getElementById('navAdminLink').classList.toggle('hidden', !isAdmin);
     document.getElementById('ddAdminBtn').classList.toggle('hidden', !isAdmin);
     document.getElementById('adminArea').classList.toggle('hidden', !isAdmin);
+    document.getElementById('heroAdminBtn').classList.toggle('hidden', !isAdmin);
     document.getElementById('userNoticeArea').classList.toggle('hidden', isAdmin);
 
-    // Load shared data
     products = getSharedData();
     updateStats();
     showLandingState();
+
+    if (isAdmin) {
+        setTimeout(() => {
+            showToast(`Selamat datang Admin! Buka panel untuk upload Excel.`, 'success');
+        }, 600);
+    }
 }
 
 function isUserAdmin() {
     return currentUser && currentUser.role === 'admin';
 }
 
-// =====================================================
 // AUTH HELPERS
-// =====================================================
 function showLoginErr(msg) {
     const el = document.getElementById('loginErr');
     document.getElementById('loginErrMsg').textContent = msg;
@@ -2412,15 +2450,6 @@ function switchToRegister() {
     hideAuthMessages();
     document.getElementById('loginBox').classList.add('hidden');
     document.getElementById('registerBox').classList.remove('hidden');
-    // Update notice based on user count
-    const users = getUsers();
-    const notice = document.getElementById('adminNoticeReg');
-    if (users.length === 0) {
-        notice.classList.remove('hidden');
-        notice.innerHTML = '<span>👑</span><span><b>Akun pertama otomatis jadi ADMIN.</b> Admin bisa upload Excel & kelola data.</span>';
-    } else {
-        notice.classList.add('hidden');
-    }
 }
 function switchToLogin() {
     hideAuthMessages();
@@ -2438,10 +2467,8 @@ function checkPwStrength(pw) {
     if (pw.length >= 10) score++;
     if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
     if (/[0-9]/.test(pw) || /[^A-Za-z0-9]/.test(pw)) score++;
-
     const colors = ['#EF5350', '#FFD600', '#00D2FF', '#00E676'];
     const labels = ['Lemah', 'Cukup', 'Kuat', 'Sangat Kuat'];
-
     for (let i = 1; i <= 4; i++) {
         document.getElementById('pb' + i).style.background =
             i <= score ? colors[score - 1] : 'rgba(255,255,255,0.1)';
@@ -2451,37 +2478,24 @@ function checkPwStrength(pw) {
     lbl.style.color = pw.length > 0 ? colors[Math.max(score - 1, 0)] : '';
 }
 
-// =====================================================
-// NAVBAR
-// =====================================================
+// NAV
 window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50);
     document.getElementById('backTop').classList.toggle('show', scrollY > 500);
 });
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function goTo(id) {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-function toggleMobileNav() {
-    document.getElementById('navLinks').classList.toggle('show');
-}
-function toggleDropdown() {
-    document.getElementById('dropdownMenu').classList.toggle('open');
-}
-function closeDropdown() {
-    document.getElementById('dropdownMenu').classList.remove('open');
-}
+function toggleMobileNav() { document.getElementById('navLinks').classList.toggle('show'); }
+function toggleDropdown() { document.getElementById('dropdownMenu').classList.toggle('open'); }
+function closeDropdown() { document.getElementById('dropdownMenu').classList.remove('open'); }
 document.addEventListener('click', e => {
     if (!e.target.closest('.user-dropdown')) closeDropdown();
 });
 
-// =====================================================
 // BUILD UI
-// =====================================================
 function buildStoreFilesGrid() {
     let html = '';
     STORES.forEach((s, i) => {
@@ -2493,6 +2507,9 @@ function buildStoreFilesGrid() {
                         <h4>${s.name}</h4>
                         <p id="sfFileName${i}">Belum upload</p>
                     </div>
+                </div>
+                <div class="sf-upload-prompt">
+                    📂 Klik untuk Upload Excel
                 </div>
                 <div class="sf-status">
                     <span class="badge-status badge-empty" id="sfBadge${i}">Kosong</span>
@@ -2522,13 +2539,14 @@ function buildStoreToggleGrid() {
     document.getElementById('storeToggleGrid').innerHTML = html;
 }
 
-// =====================================================
-// CONVERTER - FILE UPLOAD
-// =====================================================
+// FILE UPLOAD
 function handleStoreFileUpload(e, idx) {
+    if (!isUserAdmin()) {
+        showToast('Hanya admin yang bisa upload file!', 'error');
+        return;
+    }
     const file = e.target.files[0];
     if (!file) return;
-
     const ext = file.name.split('.').pop().toLowerCase();
     if (!['xlsx','xls','csv'].includes(ext)) {
         showToast('Format file tidak didukung!', 'error');
@@ -2547,7 +2565,6 @@ function handleStoreFileUpload(e, idx) {
 
             updateProgress(70);
 
-            // Deteksi header
             let headerRow = -1, colName = -1, colPrice = -1, colCode = -1, colJenis = -1;
             for (let r = 0; r < Math.min(rows.length, 30); r++) {
                 const row = rows[r];
@@ -2562,7 +2579,6 @@ function handleStoreFileUpload(e, idx) {
                 if (headerRow >= 0 && colName >= 0 && colPrice >= 0) break;
             }
 
-            // Fallback
             if (headerRow < 0 || colName < 0 || colPrice < 0) {
                 for (let r = 0; r < Math.min(rows.length, 15); r++) {
                     const row = rows[r];
@@ -2584,7 +2600,6 @@ function handleStoreFileUpload(e, idx) {
 
             updateProgress(85);
 
-            // Baca data
             const data = {};
             let count = 0;
             for (let r = headerRow + 1; r < rows.length; r++) {
@@ -2622,7 +2637,6 @@ function handleStoreFileUpload(e, idx) {
                 updateStoresCount();
                 e.target.value = '';
             }, 300);
-
         } catch(err) {
             hideLoading();
             showToast('Gagal membaca file: ' + err.message, 'error');
@@ -2663,27 +2677,21 @@ function parsePrice(v) {
     return (isNaN(n) || n <= 0) ? null : Math.round(n);
 }
 
-// =====================================================
-// PROCESS CONVERTER - GABUNGKAN SEMUA TOKO
-// =====================================================
+// PROCESS CONVERTER
 function processConverter() {
     if (!isUserAdmin()) {
         showToast('Hanya admin yang bisa memproses data!', 'error');
         return;
     }
-
     const loaded = storeFiles.filter(Boolean).length;
     if (loaded === 0) {
         showToast('Upload minimal 1 file Excel toko dulu!', 'error');
         return;
     }
-
     showLoading(`Menggabungkan data dari ${loaded} toko...`, 20);
 
     setTimeout(() => {
         updateProgress(40);
-
-        // Kumpulkan semua key unik
         const allKeys = {};
         for (let i = 0; i < 5; i++) {
             Object.keys(storeData[i]).forEach(k => {
@@ -2699,10 +2707,8 @@ function processConverter() {
                 }
             });
         }
-
         updateProgress(70);
 
-        // Build products array
         products = Object.keys(allKeys).map(k => {
             const prices = [];
             for (let i = 0; i < 5; i++) {
@@ -2716,9 +2722,7 @@ function processConverter() {
             };
         });
 
-        // Sort by name
         products.sort((a, b) => a.name.localeCompare(b.name));
-
         updateProgress(95);
         saveSharedData();
         updateProgress(100);
@@ -2730,17 +2734,13 @@ function processConverter() {
             showLandingState();
             setTimeout(() => goTo('resultArea'), 500);
         }, 300);
-
     }, 200);
 }
 
-// =====================================================
-// SEARCH - OPTIMIZED FOR 13K+ ITEMS
-// =====================================================
+// SEARCH
 function onSearchInput() {
     const val = document.getElementById('searchInput').value;
     document.getElementById('searchClear').classList.toggle('show', val.length > 0);
-
     clearTimeout(searchTimeout);
 
     if (val.trim().length < 2) {
@@ -2749,43 +2749,29 @@ function onSearchInput() {
         document.getElementById('searchHint').innerHTML = '💡 Ketik minimal <b>2 huruf</b> untuk mulai mencari. Pencarian otomatis sambil mengetik. Tekan <kbd>Esc</kbd> untuk reset.';
         return;
     }
-
     document.getElementById('searchHint').className = 'search-hint searching';
     document.getElementById('searchHint').innerHTML = '🔍 Mencari produk...';
-
-    // Debounce
     searchTimeout = setTimeout(() => performSearch(), 300);
 }
 
 function performSearch() {
     const q = (document.getElementById('searchInput').value || '').trim();
-    if (q.length < 2) {
-        showLandingState();
-        return;
-    }
-
+    if (q.length < 2) { showLandingState(); return; }
     const sortBy = document.getElementById('sortSelect').value;
     currentSearchQuery = q;
-
-    // Tokenize query
     const words = q.toUpperCase().split(/\s+/).filter(w => w.length > 0);
 
-    // FILTER — Smart match: semua kata harus ada
     let list = [];
     for (let i = 0; i < products.length; i++) {
         const p = products[i];
         const upName = p.name.toUpperCase();
         let match = true;
         for (let j = 0; j < words.length; j++) {
-            if (!upName.includes(words[j])) {
-                match = false;
-                break;
-            }
+            if (!upName.includes(words[j])) { match = false; break; }
         }
         if (match) list.push(p);
     }
 
-    // SORT
     list.sort((a, b) => {
         const am = getMinPrice(a), bm = getMinPrice(b);
         const ax = getMaxPrice(a), bx = getMaxPrice(b);
@@ -2843,18 +2829,13 @@ function showLandingState() {
     `;
 }
 
-// =====================================================
-// RENDER RESULTS - WITH PAGINATION (Performance!)
-// =====================================================
 function renderSearchResults() {
     const cont = document.getElementById('productsContainer');
     const hdr = document.getElementById('resultsHeader');
     const list = currentFilteredList;
     const q = currentSearchQuery;
-
     hdr.classList.remove('hidden');
     document.getElementById('resultCount').textContent = list.length;
-
     document.getElementById('searchHint').className = 'search-hint found';
     document.getElementById('searchHint').innerHTML = `✅ Ditemukan <b>${list.length.toLocaleString()}</b> produk untuk "<b>${escapeHTML(q)}</b>"`;
 
@@ -2869,14 +2850,11 @@ function renderSearchResults() {
         return;
     }
 
-    // Render hanya PAGE_SIZE pertama dulu
     const toRender = list.slice(0, PAGE_SIZE);
     currentDisplayCount = toRender.length;
-
     let html = '<div class="products-grid" id="productsGrid">';
     toRender.forEach(p => html += buildProductCard(p, q));
     html += '</div>';
-
     if (list.length > PAGE_SIZE) {
         html += `
             <div class="load-more-wrap" id="loadMoreWrap">
@@ -2886,7 +2864,6 @@ function renderSearchResults() {
             </div>
         `;
     }
-
     cont.innerHTML = html;
 }
 
@@ -2895,19 +2872,12 @@ function loadMoreResults() {
     const grid = document.getElementById('productsGrid');
     const next = list.slice(currentDisplayCount, currentDisplayCount + PAGE_SIZE);
     const q = currentSearchQuery;
-
-    // Append using DocumentFragment for performance
     const tempDiv = document.createElement('div');
     let h = '';
     next.forEach(p => h += buildProductCard(p, q));
     tempDiv.innerHTML = h;
-
-    while (tempDiv.firstChild) {
-        grid.appendChild(tempDiv.firstChild);
-    }
-
+    while (tempDiv.firstChild) grid.appendChild(tempDiv.firstChild);
     currentDisplayCount += next.length;
-
     const wrap = document.getElementById('loadMoreWrap');
     if (currentDisplayCount >= list.length) {
         wrap.remove();
@@ -2918,7 +2888,6 @@ function loadMoreResults() {
 }
 
 function buildProductCard(prod, query) {
-    // Calculate active prices
     const activePrices = [];
     STORES.forEach((s, i) => {
         if (activeStores[i] && prod.prices[i] !== null) {
@@ -2926,13 +2895,11 @@ function buildProductCard(prod, query) {
         }
     });
     activePrices.sort((a, b) => a.price - b.price);
-
     const minPrice = activePrices.length ? activePrices[0].price : null;
     const maxPrice = activePrices.length ? activePrices[activePrices.length - 1].price : null;
     const savingPct = (minPrice && maxPrice && maxPrice > minPrice)
         ? Math.round((maxPrice - minPrice) / maxPrice * 100) : 0;
 
-    // Build price rows
     let priceRows = '';
     STORES.forEach((s, i) => {
         if (!activeStores[i]) return;
@@ -2953,7 +2920,6 @@ function buildProductCard(prod, query) {
         `;
     });
 
-    // Build bars
     let bars = '';
     if (maxPrice) {
         STORES.forEach((s, i) => {
@@ -2971,10 +2937,7 @@ function buildProductCard(prod, query) {
         });
     }
 
-    // Highlight search terms in name
     const highlightedName = highlightQuery(escapeHTML(prod.name), query);
-
-    // Meta info
     let meta = '';
     if (prod.code) meta += `<span>📋 ${escapeHTML(prod.code)}</span>`;
     if (prod.jenis) meta += `<span>🏷️ ${escapeHTML(prod.jenis)}</span>`;
@@ -3017,9 +2980,7 @@ function highlightQuery(text, query) {
     return result;
 }
 
-// =====================================================
 // STATS
-// =====================================================
 function getMinPrice(p) {
     const v = p.prices.filter((_, i) => activeStores[i] && p.prices[i] !== null);
     return v.length ? Math.min(...v) : null;
@@ -3028,21 +2989,17 @@ function getMaxPrice(p) {
     const v = p.prices.filter((_, i) => activeStores[i] && p.prices[i] !== null);
     return v.length ? Math.max(...v) : null;
 }
-
 function updateStats() {
     document.getElementById('statTotal').textContent = products.length.toLocaleString();
     document.getElementById('lsProducts').textContent = products.length.toLocaleString();
     updateStoresCount();
-
     if (products.length === 0) {
         document.getElementById('statSaving').textContent = '0%';
         document.getElementById('statCheapest').textContent = '-';
         return;
     }
-
     let totalSave = 0, count = 0;
     const cheapCount = [0, 0, 0, 0, 0];
-
     for (let idx = 0; idx < products.length; idx++) {
         const p = products[idx];
         const mn = getMinPrice(p), mx = getMaxPrice(p);
@@ -3056,15 +3013,12 @@ function updateStats() {
             }
         }
     }
-
     document.getElementById('statSaving').textContent = count ? Math.round(totalSave / count) + '%' : '0%';
     const maxC = Math.max(...cheapCount);
     document.getElementById('statCheapest').textContent = maxC > 0 ? STORES[cheapCount.indexOf(maxC)].code : '-';
 }
 
-// =====================================================
 // STORE TOGGLE
-// =====================================================
 function toggleStore(el, idx) {
     const activeCount = activeStores.filter(Boolean).length;
     if (activeStores[idx] && activeCount <= 1) {
@@ -3073,21 +3027,16 @@ function toggleStore(el, idx) {
     }
     activeStores[idx] = !activeStores[idx];
     el.classList.toggle('active');
-
-    // Re-render if showing results
     const q = document.getElementById('searchInput').value.trim();
     if (q.length >= 2) performSearch();
 }
 
-// =====================================================
-// SAMPLE DATA
-// =====================================================
+// SAMPLE
 function loadSampleData() {
     if (!isUserAdmin()) {
         showToast('Hanya admin yang bisa memuat data!', 'error');
         return;
     }
-
     products = [
         {name:'MASKER DUCKBILL PUTIH/MIX WARNA ISI 50 PCS', code:'NN00000', jenis:'PLASTIK', prices:[25000,24000,26000,25500,23500]},
         {name:'MASKER DUCKBILL/KN 95/KF 94 ISI 10 PCS', code:'NN00001', jenis:'PLASTIK', prices:[10000,9500,11000,10500,9000]},
@@ -3097,39 +3046,21 @@ function loadSampleData() {
         {name:'DANDANG ALM PARAMOUNT 26 CM', code:'NN00005', jenis:'ALLUMINIUM', prices:[52000,50500,53500,52500,49500]},
         {name:'DANDANG ALM PARAMOUNT 28 CM', code:'NN00006', jenis:'ALLUMINIUM', prices:[61000,59500,62500,61500,58500]},
         {name:'DANDANG ALM PARAMOUNT 30 CM', code:'NN00007', jenis:'ALLUMINIUM', prices:[72500,71000,74000,73000,70000]},
-        {name:'DANDANG ALM PARAMOUNT 33 CM', code:'NN00008', jenis:'ALLUMINIUM', prices:[88500,87000,90000,89000,86000]},
-        {name:'DANDANG ALM EAGLE 36 CM', code:'NN00009', jenis:'ALLUMINIUM', prices:[137500,135000,140000,138500,133500]},
-        {name:'DANDANG ALM EAGLE 40 CM', code:'NN00010', jenis:'ALLUMINIUM', prices:[186000,183000,189000,187500,181000]},
-        {name:'DANDANG ALM EAGLE 45 CM', code:'NN00011', jenis:'ALLUMINIUM', prices:[243500,240000,247000,245000,238000]},
-        {name:'DRINK JAR FLORENCE 10 L', code:'NN00012', jenis:'PLASTIK', prices:[218000,215000,221000,219500,213000]},
-        {name:'DRINK JAR FLORENCE 8 L EAGLE', code:'NN00013', jenis:'PLASTIK', prices:[196500,194000,199000,197500,192000]},
-        {name:'DRINK JAR ROMA 6 L EAGLE', code:'NN00014', jenis:'PLASTIK', prices:[170000,167500,172500,171000,165500]},
-        {name:'DRINK JAR ROMA 8 L EAGLE', code:'NN00015', jenis:'PLASTIK', prices:[184000,181500,186500,185000,179500]},
-        {name:'DRINK JAR ROMA 10 L EAGLE', code:'NN00016', jenis:'PLASTIK', prices:[208000,205500,210500,209000,203500]},
-        {name:'DRINK JAR ROMA 12 L EAGLE', code:'NN00017', jenis:'PLASTIK', prices:[241000,238500,243500,242000,236500]},
-        {name:'KERANJANG PASAR RIO MIAMI EAGLE', code:'NN00018', jenis:'PLASTIK', prices:[51500,50000,53000,52000,48500]},
-        {name:'KERANJANG PICNIC ORLANDO EAGLE', code:'NN00019', jenis:'PLASTIK', prices:[68500,67000,70000,69000,65500]},
         {name:'PANCI ALM 24 CM', code:'NN00020', jenis:'ALLUMINIUM', prices:[85000,79000,82000,88000,76000]},
         {name:'WAJAN TEFLON 28 CM', code:'NN00021', jenis:'BESI', prices:[120000,115000,125000,110000,118000]},
         {name:'KOMPOR GAS 2 TUNGKU RINNAI', code:'NN00022', jenis:'BESI', prices:[450000,435000,460000,440000,425000]},
         {name:'RICE COOKER MIYAKO 1.8L', code:'NN00023', jenis:'ELEKTRONIK', prices:[285000,278000,290000,275000,282000]},
         {name:'BLENDER PHILIPS HR2115', code:'NN00024', jenis:'ELEKTRONIK', prices:[385000,375000,390000,370000,380000]},
         {name:'KASUR BUSA 90X200', code:'NN00030', jenis:'BUSA', prices:[650000,630000,670000,645000,620000]},
-        {name:'KASUR BUSA 120X200', code:'NN00031', jenis:'BUSA', prices:[850000,830000,870000,845000,820000]},
         {name:'KASUR BUSA 160X200', code:'NN00032', jenis:'BUSA', prices:[1100000,1080000,1120000,1095000,1070000]},
-        {name:'KASUR PEGAS 90X200', code:'NN00033', jenis:'PEGAS', prices:[1500000,1470000,1530000,1490000,1460000]},
-        {name:'KASUR PEGAS 160X200', code:'NN00034', jenis:'PEGAS', prices:[2200000,2170000,2230000,2190000,2160000]},
     ];
-
     saveSharedData();
     updateStats();
     showLandingState();
     showToast(`${products.length} data contoh dimuat!`, 'success');
 }
 
-// =====================================================
 // MANUAL ADD
-// =====================================================
 function openAddModal() {
     if (!isUserAdmin()) {
         showToast('Hanya admin yang bisa menambah produk!', 'error');
@@ -3137,17 +3068,11 @@ function openAddModal() {
     }
     document.getElementById('addModal').classList.add('show');
 }
-function closeAddModal() {
-    document.getElementById('addModal').classList.remove('show');
-}
+function closeAddModal() { document.getElementById('addModal').classList.remove('show'); }
 
 function saveManual() {
     const name = (document.getElementById('m_name').value || '').trim();
-    if (!name) {
-        showToast('Nama produk wajib diisi!', 'error');
-        return;
-    }
-
+    if (!name) { showToast('Nama produk wajib diisi!', 'error'); return; }
     products.push({
         name: name,
         code: (document.getElementById('m_code').value || '').trim(),
@@ -3160,24 +3085,19 @@ function saveManual() {
             parsePrice(document.getElementById('m_p5').value)
         ]
     });
-
     saveSharedData();
     updateStats();
     closeAddModal();
     showToast(`"${name}" berhasil ditambahkan!`, 'success');
-
     ['m_name','m_code','m_jenis','m_p1','m_p2','m_p3','m_p4','m_p5'].forEach(id =>
         document.getElementById(id).value = ''
     );
-
     const q = document.getElementById('searchInput').value.trim();
     if (q.length >= 2) performSearch();
     else showLandingState();
 }
 
-// =====================================================
 // CLEAR
-// =====================================================
 function clearAllData() {
     if (!isUserAdmin()) {
         showToast('Hanya admin yang bisa menghapus data!', 'error');
@@ -3191,20 +3111,15 @@ function clearAllData() {
     showToast('Semua data berhasil dihapus!', 'info');
 }
 
-// =====================================================
-// EXPORT EXCEL
-// =====================================================
+// EXPORT
 function exportData() {
     if (products.length === 0) {
         showToast('Tidak ada data untuk diexport!', 'error');
         return;
     }
-
     showLoading('Membuat file Excel...', 30);
-
     setTimeout(() => {
         const rows = [['Nama Produk', 'Kode', 'Jenis', ...STORES.map(s => s.name), 'Harga Termurah', 'Toko Termurah', 'Selisih Hemat']];
-
         products.forEach(p => {
             const validPrices = p.prices.filter(v => v !== null);
             const mn = validPrices.length ? Math.min(...validPrices) : null;
@@ -3218,14 +3133,11 @@ function exportData() {
                 (mn && mx) ? (mx - mn) : ''
             ]);
         });
-
         updateProgress(70);
-
         const ws = XLSX.utils.aoa_to_sheet(rows);
         ws['!cols'] = [{wch:35},{wch:12},{wch:15},{wch:22},{wch:22},{wch:28},{wch:25},{wch:30},{wch:16},{wch:30},{wch:14}];
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Perbandingan Harga');
-
         updateProgress(100);
         setTimeout(() => {
             XLSX.writeFile(wb, 'PriceHunter_Perbandingan.xlsx');
@@ -3235,37 +3147,28 @@ function exportData() {
     }, 100);
 }
 
-// =====================================================
-// UTILITIES
-// =====================================================
+// UTILS
 function formatRupiah(n) {
     if (n === null || n === undefined) return '-';
     return 'Rp ' + Number(n).toLocaleString('id-ID');
 }
-
 function escapeHTML(s) {
     const div = document.createElement('div');
     div.textContent = s || '';
     return div.innerHTML;
 }
-
 function showLoading(text, progress) {
     document.getElementById('loadingText').textContent = text || 'Memproses...';
     document.getElementById('progressFill').style.width = (progress || 0) + '%';
     document.getElementById('loadingOverlay').classList.add('show');
 }
-
 function updateProgress(percent) {
     document.getElementById('progressFill').style.width = percent + '%';
 }
-
 function hideLoading() {
     document.getElementById('loadingOverlay').classList.remove('show');
-    setTimeout(() => {
-        document.getElementById('progressFill').style.width = '0%';
-    }, 300);
+    setTimeout(() => { document.getElementById('progressFill').style.width = '0%'; }, 300);
 }
-
 function showToast(msg, type = 'info') {
     const wrap = document.getElementById('toastWrap');
     const t = document.createElement('div');
@@ -3281,10 +3184,7 @@ function showToast(msg, type = 'info') {
     }, 3500);
 }
 
-// Modal handlers
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeAddModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAddModal(); });
 document.getElementById('addModal').addEventListener('click', e => {
     if (e.target === document.getElementById('addModal')) closeAddModal();
 });
